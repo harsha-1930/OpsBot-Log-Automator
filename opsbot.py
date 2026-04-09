@@ -3,7 +3,7 @@ import random
 import re
 from datetime import datetime, timedelta
 
-# --- Step 1: Generate a realistic log file ---
+#Step 1: Generate a realistic log file
 log_messages = [
     "INFO: Server started successfully",
     "INFO: User logged in",
@@ -26,7 +26,7 @@ with open("server.log", "w") as f:
 
 print("server.log created with 5000 realistic timestamped lines.")
 
-# --- Step 2: Parse and filter logs ---
+# Step 2: Parse and filter logs
 keywords = ["CRITICAL", "ERROR", "FAILED LOGIN"]
 alerts = []
 counts = {key: 0 for key in keywords}
@@ -40,7 +40,7 @@ for line in lines:
             alerts.append(line.strip())
             counts[key] += 1
 
-# --- Step 3: Generate security alert report ---
+#Generate security alert report 
 date_str = datetime.now().strftime("%Y-%m-%d")
 alert_file = f"security_alert_{date_str}.txt"
 
@@ -53,6 +53,6 @@ with open(alert_file, "w") as f:
     for alert in alerts:
         f.write(alert + "\n")
 
-# --- Step 4: Automation - confirm file size ---
+#  Automation 
 file_size = os.path.getsize(alert_file)
 print(f"Security alert file '{alert_file}' created. Size: {file_size} bytes")
